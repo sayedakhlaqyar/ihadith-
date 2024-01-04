@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Hadith of Prophet Muhammad (PBUH)" />
+    <meta property="og:description" content="Learn more about this Hadith." />
+    <meta
+      property="og:image"
+      content="https://drive.google.com/uc?id=1HBn5wEZuuWvyfkNZzpRG5JIugJkeslIp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://ihadith.com" />
+    <meta property="og:type" content="website" />
+    <meta property="fb:app_id" content="670402935044248" />
+    <title>ihadith</title>
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!--
+    google fonts 
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Inter:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- 
+    custom css
+    -->
+    <link rel="stylesheet" href="assets/css/hadith.css" />
+
+    <!-- 
+    - preload asset
+    -->
+    <audio preload="auto">
+      <source src="/assets/capture.mp3" type="audio/mpeg" />
+    </audio>
+    <link rel="preload" href="/assets/images/QR_Code01.png" as="image" />
+    <link rel="preload" href="/assets/images/QR_Code02.png" as="image" />
+    <link rel="preload" href="/assets/images/border.png" as="image" />
+    <link rel="preload" href="/assets/images/counterVector.webp" as="image" />
+    <link rel="preload" href="/assets/images/Vector.webp" as="image" />
+  </head>
+  <body>
+    <!-- 
+    bg images
+    -->
+    <div class="bg__images">
+      <div class="bg bg-1"></div>
+      <div class="bg bg-2"></div>
+    </div>
+
+    <!-- 
+    main
+    -->
+    <section class="main" data-hadith-main>
+      <article class="container" data-hadith-container>
+        <div class="top__area" data-top-area>
+          <a href="/index.html" class="logo__text" data-logo-text>ihadith</a>
+          <div class="spacebar__info">
+            <div class="info__text">
+              Press <kbd>Spacebar</kbd> for random hadith.
+            </div>
+          </div>
+          <div class="top__btns" data-top-btns>
+            <button
+              data-tooltip-text="Search hadith"
+              data-hadith-info-btn
+              data-popup-open="#popupSearch"
+            >
+              <span class="material-symbols-outlined">search</span>
+            </button>
+
+            <button data-tooltip-text="Capture" data-capture-img-btn>
+              <!-- <ion-icon name="camera-outline"></ion-icon> -->
+              <span class="material-symbols-outlined">photo_camera</span>
+            </button>
+
+            <button
+              data-tooltip-text="Share"
+              data-share-link-btn
+              data-popup-open="#popupShare"
+            >
+              <!-- <ion-icon name="share-social-outline"></ion-icon> -->
+              <span class="material-symbols-outlined">share</span>
+            </button>
+
+            <button data-tooltip-text="Copy" data-copy-btn>
+              <!-- <ion-icon name="clipboard-outline"></ion-icon> -->
+              <span class="material-symbols-outlined">content_paste</span>
+            </button>
+
+            <button data-tooltip-text="Grades" data-popup-open="#popupGrades">
+              <!-- <ion-icon name="bulb-outline"></ion-icon> -->
+              <span class="material-symbols-outlined">insights</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="center__area hadith" data-hadith-text></div>
+
+        <div class="empty__div"></div>
+        <div class="bottom__area" data-bottom-area>
+          <div class="bottom__btns" data-bottom-btns>
+            <button data-prev-btn>
+              <!-- <ion-icon name="arrow-back-circle-outline"></ion-icon> -->
+              <span class="material-symbols-outlined">arrow_circle_left</span>
+            </button>
+
+            <!-- <a href="/index.html">
+              <button>
+                <ion-icon name="home-outline"></ion-icon>
+              </button>
+            </a> -->
+            <button data-random-btn>
+              <span class="material-symbols-outlined">casino</span>
+            </button>
+
+            <button data-next-btn>
+              <!-- <ion-icon name="arrow-forward-circle-outline"></ion-icon> -->
+              <span class="material-symbols-outlined">arrow_circle_right</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!--  
+      caputured img container
+      -->
+      <div class="capture__img-container" data-capture-img-container></div>
+
+      <!--  
+      capture overlay
+      -->
+      <div class="capture__overlay" data-capture-overlay></div>
+
+      <!-- 
+      edit image
+      -->
+      <div class="edit__img-popup" data-edit-img-popup>
+        <div class="edit__header">
+          <a href="/index.html" class="logo__text">ihadith</a>
+
+          <div class="header__menu">
+            <button
+              class="download__btn clr-btn-2"
+              data-edit-download-btn
+              data-popup-open="#popupDownload"
+            >
+              <span class="material-symbols-outlined">download</span>
+              <span class="material-symbols-outlined">download</span>
+              <span class="btn-text">Download</span>
+            </button>
+            <button
+              class="info__preview-btn clr-btn-2"
+              data-tooltip-text="About image preview"
+            >
+              <span class="material-symbols-outlined">lightbulb</span>
+            </button>
+            <button
+              class="close__btn clr-btn-2"
+              data-close-img-edit-popup-btn
+              data-tooltip-text="Exit"
+            >
+              <span class="material-symbols-outlined">logout</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <div class="sidebar__menu">
+            <li
+              class="menu__item"
+              data-edit-img-menut-item
+              data-tab-open="#tabBackground"
+              data-modal-open="#modalImageBg"
+            >
+              <i class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="M440-80q-33 0-56.5-23.5T360-160v-160H240q-33 0-56.5-23.5T160-400v-280q0-66 47-113t113-47h480v440q0 33-23.5 56.5T720-320H600v160q0 33-23.5 56.5T520-80h-80ZM240-560h480v-200h-40v160h-80v-160h-40v80h-80v-80H320q-33 0-56.5 23.5T240-680v120Zm0 160h480v-80H240v80Zm0-80v80-80Z"
+                  />
+                </svg>
+              </i>
+              <span class="menu__text">Background</span>
+            </li>
+
+            <li
+              class="menu__item"
+              data-edit-img-menut-item
+              data-tab-open="#tabFont"
+            >
+              <i class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="M200-200v-80h560v80H200Zm76-160 164-440h80l164 440h-76l-38-112H392l-40 112h-76Zm138-176h132l-64-182h-4l-64 182Z"
+                  />
+                </svg>
+              </i>
+              <span class="menu__text">Font</span>
+            </li>
+
+            <li
+              class="menu__item"
+              data-edit-img-menut-item
+              data-tab-open="#tabColor"
+              data-modal-open="#modalColorBg"
+            >
+              <i class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 32.5-156t88-127Q256-817 330-848.5T488-880q80 0 151 27.5t124.5 76q53.5 48.5 85 115T880-518q0 115-70 176.5T640-280h-74q-9 0-12.5 5t-3.5 11q0 12 15 34.5t15 51.5q0 50-27.5 74T480-80Zm0-400Zm-220 40q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm120-160q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm200 0q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm120 160q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17ZM480-160q9 0 14.5-5t5.5-13q0-14-15-33t-15-57q0-42 29-67t71-25h70q66 0 113-38.5T800-518q0-121-92.5-201.5T488-800q-136 0-232 93t-96 227q0 133 93.5 226.5T480-160Z"
+                  />
+                </svg>
+              </i>
+              <span class="menu__text">Color</span>
+            </li>
+
+            <li
+              class="menu__item"
+              data-edit-img-menut-item
+              data-tab-open="#tabSpacing"
+            >
+              <i class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="M320-80 160-240l160-160 57 56-64 64h334l-63-64 56-56 160 160L640-80l-57-56 64-64H313l63 64-56 56ZM200-480v-400h80v400h-80Zm240 0v-400h80v400h-80Zm240 0v-400h80v400h-80Z"
+                  />
+                </svg>
+              </i>
+              <span class="menu__text">Spacing</span>
+            </li>
+          </div>
+
+          <!-- background tab -->
+          <div class="menu__tab" id="tabBackground">
+            <div class="tab__container">
+              <div class="tab__title">Select Background</div>
+              <div class="tab__header">
+                <ul class="tab__header-items">
+                  <li
+                    class="tab__header-item clr-btn"
+                    data-tab-header-item
+                    data-modal-open="#modalImageBg"
+                  >
+                    <span class="material-symbols-outlined">image</span>
+                    <span class="tab__header-item-text">Image</span>
+                  </li>
+                  <li
+                    class="tab__header-item clr-btn"
+                    data-tab-header-item
+                    data-modal-open="#modalColorBg"
+                  >
+                    <span class="material-symbols-outlined">palette</span>
+                    <span class="tab__header-item-text">Color</span>
+                  </li>
+                  <li
+                    class="tab__header-item clr-btn"
+                    data-tab-header-item
+                    data-modal-open="#modalGradientBg"
+                  >
+                    <span class="material-symbols-outlined">Gradient</span>
+                    <span class="tab__header-item-text"> Gradient </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab__list" data-tab-list-bg></div>
+            </div>
+          </div>
+
+          <!-- font tab -->
+          <div class="menu__tab" id="tabFont">
+            <div class="tab__container">
+              <div class="tab__title">Select Font</div>
+              <div class="tab__header">
+                <ul class="tab__header-items">
+                  <li class="tab__header-item clr-btn" data-tab-header-item>
+                    <span class="material-symbols-outlined">match_case</span>
+                    <span class="tab__header-item-text">English</span>
+                  </li>
+
+                  <li class="tab__header-item clr-btn" data-tab-header-item>
+                    <span class="material-symbols-outlined">match_case</span>
+                    <span class="tab__header-item-text">Arabic</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab__list" data-tab-list-font data-tab-list></div>
+            </div>
+          </div>
+
+          <!-- color tab -->
+          <div class="menu__tab" id="tabColor">
+            <div class="tab__container">
+              <div class="tab__title">Select Color</div>
+              <div class="tab__header">
+                <!-- <ul class="tab__header-items">
+                  <li class="tab__header-item" data-tab-header-item>
+                    <span class="material-symbols-outlined">image</span>
+                    <span class="tab__header-item-text">Image</span>
+                  </li>
+                  <li class="tab__header-item" data-tab-header-item>
+                    <span class="material-symbols-outlined">palette</span>
+                    <span class="tab__header-item-text">Color</span>
+                  </li>
+                  <li class="tab__header-item" data-tab-header-item>
+                    <span class="material-symbols-outlined">Gradient</span>
+                    <span class="tab__header-item-text"> Gradient </span>
+                  </li>
+                </ul> -->
+              </div>
+              <div class="tab__list" data-tab-list-color data-tab-list></div>
+            </div>
+          </div>
+
+          <!-- color tab -->
+          <div class="menu__tab" id="tabSpacing">
+            <div class="tab__container">
+              <div class="tab__title">Select Color</div>
+              <div class="tab__header">
+                <ul class="tab__header-items">
+                  <li class="tab__header-item clr-btn" data-tab-header-item>
+                    <span class="material-symbols-outlined">image</span>
+                    <span class="tab__header-item-text">Logo</span>
+                  </li>
+                  <li class="tab__header-item clr-btn" data-tab-header-item>
+                    <span class="material-symbols-outlined">palette</span>
+                    <span class="tab__header-item-text">Text</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="ranges">
+                <div class="range">
+                  <div class="top">
+                    <div class="range__text">Letter spacing</div>
+                    <input
+                      type="number"
+                      class="input__current-value"
+                      inputmode="numeric"
+                      value="0"
+                      data-input-letter-spacing
+                    />
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="40"
+                    value="0"
+                    class="input__spacing range__letter-spacing"
+                    data-range-letter-spacing
+                    disabled
+                  />
+                </div>
+
+                <div class="range">
+                  <div class="top">
+                    <div class="range__text">Line spacing</div>
+                    <input
+                      type="number"
+                      class="input__current-value"
+                      inputmode="numeric"
+                      value="0"
+                      data-input-line-spacing
+                    />
+                  </div>
+                  <input
+                    type="range"
+                    min="140"
+                    max="250"
+                    value="0"
+                    class="input__spacing input__line-spacing"
+                    data-range-line-spacing
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- image modal bg -->
+          <div class="modal__image-bg modal" id="modalImageBg">
+            <div class="wrapper">
+              <button class="open__file-btn clr-btn" data-open-file-bg-btn>
+                Open from file
+              </button>
+              <input
+                type="file"
+                accept="image/*"
+                class="input__file-bg"
+                data-input-file-bg
+              />
+            </div>
+          </div>
+
+          <!-- color modal bg -->
+          <div class="modal__color-bg modal" id="modalColorBg">
+            <div class="wrapper">
+              <span class="input__title" data-input-color-title
+                >Custom Color</span
+              >
+              <input
+                type="color"
+                value="#9743e3"
+                class="input__color-bg"
+                data-input-color-bg
+              />
+            </div>
+          </div>
+
+          <!-- gradient modal bg -->
+          <div class="modal__gradient-bg modal" id="modalGradientBg">
+            <div class="wrapper">
+              <button
+                class="custom__gradient-btn clr-btn"
+                data-popup-open="#popupCustomGradient"
+              >
+                Custom Gradient
+              </button>
+              <!-- <input type="color" value="#9743e3" class="input__color-bg" /> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- download popup -->
+        <div class="download__popup popup" id="popupDownload">
+          <div class="download__title">Download your design</div>
+          <div
+            class="close__popup-btn clr-btn"
+            data-popup-close="#popupDownload"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </div>
+
+          <div class="file__type-container">
+            <div class="select__type">Select file type</div>
+            <div class="file__type">
+              <div
+                class="selected__type"
+                data-file-type-download-selected
+                data-extension=".png"
+              >
+                <div class="left">
+                  <span class="material-symbols-outlined">photo</span>
+                  <span class="selected__text">PNG (Recommended)</span>
+                </div>
+                <span class="material-symbols-outlined icon-expand"
+                  >expand_more</span
+                >
+              </div>
+
+              <div class="file__type-list" data-file-type-download-list>
+                <div
+                  class="file__type-item isSelected"
+                  data-file-type-download-item
+                >
+                  <div class="icon">
+                    <span class="material-symbols-outlined">photo</span>
+                  </div>
+
+                  <div class="text">
+                    <span class="selected__text" data-extension=".png"
+                      >PNG (Recommended)</span
+                    >
+                    <small>High quality image</small>
+                  </div>
+                </div>
+
+                <div class="file__type-item" data-file-type-download-item>
+                  <div class="icon">
+                    <span class="material-symbols-outlined">photo</span>
+                  </div>
+                  <div class="text">
+                    <span class="selected__text" data-extension=".jpeg"
+                      >JPEG</span
+                    >
+                    <small>Small file size image</small>
+                  </div>
+                </div>
+
+                <div class="file__type-item" data-file-type-download-item>
+                  <div class="icon">
+                    <span class="material-symbols-outlined"
+                      >picture_as_pdf</span
+                    >
+                  </div>
+                  <div class="text">
+                    <span class="selected__text" data-extension=".pdf"
+                      >PDF</span
+                    >
+                    <small>Small file size document</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="download__file-btn clr-btn" data-download-file-btn>
+              Download
+            </button>
+          </div>
+        </div>
+
+        <!-- custom gradient modal -->
+        <div class="custom__gradient-popup popup" id="popupCustomGradient">
+          <div class="head">
+            <div class="modal__title">Create Custome Gradient</div>
+            <div
+              class="close__btn clr-btn"
+              data-popup-close="#popupCustomGradient"
+            >
+              <span class="material-symbols-outlined">close</span>
+            </div>
+          </div>
+          <div class="gradient__colors">
+            <div class="input__colors">
+              <input
+                type="color"
+                class="input__gradient-color color-1"
+                value="#972adb"
+              />
+              <input
+                type="color"
+                class="input__gradient-color color-2"
+                value="#eff0f0"
+              />
+            </div>
+
+            <div class="gradient__preview"></div>
+            <button class="select__gradient-btn clr-btn">
+              <span class="material-symbols-outlined">done</span>
+              <span class="btn__text">Select Gradient</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="image" data-edit-img-main>
+          <div class="logo__text" data-edit-logo-text>ihadith</div>
+          <!-- <div class="icon">
+            <span class="material-symbols-outlined">lightbulb</span>
+          </div> -->
+          <div class="hadith__text-container">
+            <div class="hadith__text hadith" data-edit-hadith-text>
+              <div class="hadith-text"></div>
+              <div class="bookName"></div>
+            </div>
+          </div>
+        </div>
+
+        <!--
+        overlay 
+        -->
+        <div class="overlay" data-overlay>
+          <div class="close__overlay-btn clr-btn" data-close-overlay-btn>
+            <span class="material-symbols-outlined">close</span>
+          </div>
+        </div>
+
+        <!-- overlay-2 -->
+        <div class="overlay overlay-2"></div>
+      </div>
+
+      <!-- 
+      msg 
+      -->
+      <div class="msg__container" data-msg-container>
+        <div class="msg">No grades found for this hadith</div>
+      </div>
+
+      <!-- 
+      mask
+      -->
+      <div class="mask" data-mask></div>
+
+      <!-- 
+      mobile nav
+      -->
+      <div class="mobile__nav" data-mobile-nav>
+        <button class="generate__btn" data-random-btn>Generate</button>
+        <ul class="btns__list">
+          <button data-popup-open="#popupSearch">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+          <button>
+            <span class="material-symbols-outlined" data-popup-open="#navMenu"
+              >more_horiz</span
+            >
+          </button>
+        </ul>
+
+        <div class="nav__menu popup" id="navMenu">
+          <div class="close__btn">
+            <span class="material-symbols-outlined" data-popup-close="#navMenu"
+              >close</span
+            >
+          </div>
+          <div class="btns__container">
+            <button data-capture-img-btn>
+              <span class="material-symbols-outlined">photo_camera</span>
+              <span class="btn__text">Capture</span>
+            </button>
+
+            <button data-share-link-btn data-popup-open="#popupShare">
+              <span class="material-symbols-outlined">share</span>
+              <span class="btn__text">Share</span>
+            </button>
+
+            <button data-copy-btn>
+              <span class="material-symbols-outlined">content_copy</span>
+              <span class="btn__text">Copy</span>
+            </button>
+
+            <button class="hadith__grade-btn" data-popup-open="#popupGrades">
+              <span class="material-symbols-outlined">insights</span>
+              <span class="btn__text">Grades</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      search popup
+      -->
+      <div class="search__container">
+        <div class="search__hadith-popup popup" id="popupSearch">
+          <div class="popup__title">Go to Hadith</div>
+          <div class="close__popup-btn clr-btn" data-popup-close="#popupSearch">
+            <span class="material-symbols-outlined">close</span>
+          </div>
+
+          <div class="search__select-menu">
+            <div
+              class="selected__item"
+              data-search-selected-item
+              data-book="bukhari"
+            >
+              <div class="selected__text">Sahih al-Bukhari</div>
+              <span class="material-symbols-outlined">expand_more</span>
+            </div>
+
+            <div class="select__menu-option" data-search-menu-options-list>
+              <!-- <div class="option selected" data-search-menu-option-item>
+                Sahih Al Bukhari
+              </div> -->
+            </div>
+          </div>
+          <input
+            type="text"
+            id="hadithNumber"
+            class="hadith__number"
+            placeholder="Hadith No."
+            data-input-search-hadith-num
+            autofocus
+          />
+
+          <button class="search__hadith-btn clr-btn" data-search-hadith-btn>
+            <span class="material-symbols-outlined">search</span>
+            <span class="btn__text">Search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 
+      search not found
+      -->
+      <div class="search__nf">
+        <div class="title">
+          <div class="title-1">Sorry, the text for the hadith</div>
+          <div class="title-2">
+            <span class="book"></span> is not available!
+          </div>
+          <div class="btns">
+            <button class="search__more" data-popup-open="#popupSearch">
+              Search More
+            </button>
+            <button class="search__random-btn" data-random-btn>
+              Random Hadith
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      grades popup
+      -->
+      <div class="grades__container">
+        <div class="grades__popup popup" id="popupGrades">
+          <div class="popup__title">Grades</div>
+          <div class="grade__hadtih-num"></div>
+          <div class="close__popup-btn clr-btn" data-popup-close="#popupGrades">
+            <span class="material-symbols-outlined">close</span>
+          </div>
+
+          <div class="grades__list" data-grades-list></div>
+        </div>
+      </div>
+
+      <!-- 
+      grades popup
+      -->
+      <div class="share__container">
+        <div class="share__hadith-popup popup" id="popupShare">
+          <div class="popup__title">Share</div>
+          <div class="grade__hadtih-num"></div>
+          <div class="close__popup-btn clr-btn" data-popup-close="#popupShare">
+            <span class="material-symbols-outlined">close</span>
+          </div>
+
+          <div class="share__links">
+            <div class="title">Share this link via:</div>
+            <div class="share__links-container">
+              <div class="link__item" data-share-link="facebook">
+                <i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="ionicon"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M480 257.35c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 111.8 81.9 204.47 189 221.29V322.12h-56.89v-64.77H221V208c0-56.13 33.45-87.16 84.61-87.16 24.51 0 50.15 4.38 50.15 4.38v55.13H327.5c-27.81 0-36.51 17.26-36.51 35v42h62.12l-9.92 64.77H291v156.54c107.1-16.81 189-109.48 189-221.31z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </i>
+                <span class="link__item-text">Facebook</span>
+              </div>
+
+              <div class="link__item" data-share-link="twitter">
+                <i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="ionicon"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M496 109.5a201.8 201.8 0 01-56.55 15.3 97.51 97.51 0 0043.33-53.6 197.74 197.74 0 01-62.56 23.5A99.14 99.14 0 00348.31 64c-54.42 0-98.46 43.4-98.46 96.9a93.21 93.21 0 002.54 22.1 280.7 280.7 0 01-203-101.3A95.69 95.69 0 0036 130.4c0 33.6 17.53 63.3 44 80.7A97.5 97.5 0 0135.22 199v1.2c0 47 34 86.1 79 95a100.76 100.76 0 01-25.94 3.4 94.38 94.38 0 01-18.51-1.8c12.51 38.5 48.92 66.5 92.05 67.3A199.59 199.59 0 0139.5 405.6a203 203 0 01-23.5-1.4A278.68 278.68 0 00166.74 448c181.36 0 280.44-147.7 280.44-275.8 0-4.2-.11-8.4-.31-12.5A198.48 198.48 0 00496 109.5z"
+                    />
+                  </svg>
+                </i>
+                <span class="link__item-text">Twitter</span>
+              </div>
+
+              <div class="link__item" data-share-link="whatsapp">
+                <i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="ionicon"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M414.73 97.1A222.14 222.14 0 00256.94 32C134 32 33.92 131.58 33.87 254a220.61 220.61 0 0029.78 111L32 480l118.25-30.87a223.63 223.63 0 00106.6 27h.09c122.93 0 223-99.59 223.06-222A220.18 220.18 0 00414.73 97.1zM256.94 438.66h-.08a185.75 185.75 0 01-94.36-25.72l-6.77-4-70.17 18.32 18.73-68.09-4.41-7A183.46 183.46 0 0171.53 254c0-101.73 83.21-184.5 185.48-184.5a185 185 0 01185.33 184.64c-.04 101.74-83.21 184.52-185.4 184.52zm101.69-138.19c-5.57-2.78-33-16.2-38.08-18.05s-8.83-2.78-12.54 2.78-14.4 18-17.65 21.75-6.5 4.16-12.07 1.38-23.54-8.63-44.83-27.53c-16.57-14.71-27.75-32.87-31-38.42s-.35-8.56 2.44-11.32c2.51-2.49 5.57-6.48 8.36-9.72s3.72-5.56 5.57-9.26.93-6.94-.46-9.71-12.54-30.08-17.18-41.19c-4.53-10.82-9.12-9.35-12.54-9.52-3.25-.16-7-.2-10.69-.2a20.53 20.53 0 00-14.86 6.94c-5.11 5.56-19.51 19-19.51 46.28s20 53.68 22.76 57.38 39.3 59.73 95.21 83.76a323.11 323.11 0 0031.78 11.68c13.35 4.22 25.5 3.63 35.1 2.2 10.71-1.59 33-13.42 37.63-26.38s4.64-24.06 3.25-26.37-5.11-3.71-10.69-6.48z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </i>
+                <span class="link__item-text">WhatsApp</span>
+              </div>
+
+              <div class="link__item" data-share-link="mail">
+                <i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="ionicon"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M424 80H88a56.06 56.06 0 00-56 56v240a56.06 56.06 0 0056 56h336a56.06 56.06 0 0056-56V136a56.06 56.06 0 00-56-56zm-14.18 92.63l-144 112a16 16 0 01-19.64 0l-144-112a16 16 0 1119.64-25.26L256 251.73l134.18-104.36a16 16 0 0119.64 25.26z"
+                    />
+                  </svg>
+                </i>
+                <span class="link__item-text">Email</span>
+              </div>
+
+              <div class="link__item" data-popup-open="#popupQRCode">
+                <i>
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 122.88 122.7"
+                    style="enable-background: new 0 0 122.88 122.7"
+                    xml:space="preserve"
+                  >
+                    <style type="text/css">
+                      .st0 {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                      }
+                    </style>
+                    <g>
+                      <path
+                        class="st0"
+                        d="M0.18,0h44.63v44.45H0.18V0L0.18,0z M111.5,111.5h11.38v11.2H111.5V111.5L111.5,111.5z M89.63,111.48h11.38 v10.67H89.63h-0.01H78.25v-21.82h11.02V89.27h11.21V67.22h11.38v10.84h10.84v11.2h-10.84v11.2h-11.21h-0.17H89.63V111.48 L89.63,111.48z M55.84,89.09h11.02v-11.2H56.2v-11.2h10.66v-11.2H56.02v11.2H44.63v-11.2h11.2V22.23h11.38v33.25h11.02v11.2h10.84 v-11.2h11.38v11.2H89.63v11.2H78.25v22.05H67.22v22.23H55.84V89.09L55.84,89.09z M111.31,55.48h11.38v11.2h-11.38V55.48 L111.31,55.48z M22.41,55.48h11.38v11.2H22.41V55.48L22.41,55.48z M0.18,55.48h11.38v11.2H0.18V55.48L0.18,55.48z M55.84,0h11.38 v11.2H55.84V0L55.84,0z M0,78.06h44.63v44.45H0V78.06L0,78.06z M10.84,88.86h22.95v22.86H10.84V88.86L10.84,88.86z M78.06,0h44.63 v44.45H78.06V0L78.06,0z M88.91,10.8h22.95v22.86H88.91V10.8L88.91,10.8z M11.02,10.8h22.95v22.86H11.02V10.8L11.02,10.8z"
+                      />
+                    </g>
+                  </svg>
+                </i>
+                <span class="link__item-text">QR Code</span>
+              </div>
+            </div>
+
+            <div class="copy__link-container">
+              <div class="title">Or copy link:</div>
+
+              <div class="link">
+                <span class="material-symbols-outlined">link</span>
+                <input
+                  type="text"
+                  value=""
+                  class="input__link"
+                  data-input-share-link
+                  readonly
+                />
+                <button class="copy__link-btn clr-btn" data-copy-link-btn>
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      qr code popup
+      -->
+      <div class="qr__code-popup popup" id="popupQRCode">
+        <div class="popup__title">Share the QR Code!</div>
+        <div class="close__popup-btn" data-popup-close="#popupQRCode">
+          <span class="material-symbols-outlined">close</span>
+        </div>
+
+        <div class="qr__code" data-qr-code>
+          <div class="border"></div>
+        </div>
+        <div class="share__qrcode-btn" data-share-qrcode-btn>Share</div>
+        <div class="download__qrcode-btn" data-download-qrcode-btn>
+          Download
+        </div>
+        <div class="scan__text">Generating QR Code...</div>
+      </div>
+
+      <!-- 
+      onlineStatus
+      -->
+      <div class="online__status" data-online-status>
+        <div class="status__info">
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="status__text">You are offline.</span>
+        </div>
+      </div>
+
+      <!-- 
+      no internet popup
+      -->
+      <div
+        class="no__internet-popup popup popup-active"
+        id="popupNoInternet"
+        data-online-status-popup
+      >
+        <div class="wrapper">
+          <div class="logo__text">Hadith Hub</div>
+          <div class="img-box">
+            <img
+              src="/assets/images/no-internet.png"
+              alt="No Internet Image"
+              class="img"
+            />
+          </div>
+
+          <button class="retry__btn">Retry</button>
+        </div>
+      </div>
+
+      <!-- 
+      loader
+      -->
+      <div class="loader__container loader-fixed">
+        <span class="loader" data-loader-fixed></span>
+        <div class="loader__text">Loading...</div>
+      </div>
+    </section>
+
+    <!-- 
+    custom js 
+    -->
+    <!-- <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script> -->
+    <script src="assets/js/qrcode.js"></script>
+    <script src="assets/js/FileSaver.js"></script>
+    <script src="assets/js/html2canvas.js"></script>
+    <script src="assets/js/hadith.js" type="module"></script>
+  </body>
+</html>
